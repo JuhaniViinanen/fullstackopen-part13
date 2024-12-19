@@ -1,0 +1,9 @@
+services:
+  postgresDB:
+    image: postgres:17.2-alpine3.21
+    environment:
+      POSTGRES_PASSWORD: salasana
+    ports:
+      - 5432:5432
+    volumes:
+      - ./database:/var/lib/postgresql/data
