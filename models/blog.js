@@ -1,7 +1,8 @@
 const { Model, DataTypes } = require('sequelize')
-const sequelize = require('../utils/sequelize')
+const { sequelize } = require('../utils/db')
 
 class Blog extends Model {}
+
 Blog.init({
   id: {
     type: DataTypes.INTEGER,
@@ -29,7 +30,5 @@ Blog.init({
   timestamps: false,
   modelName: 'blog'
 })
-
-Blog.sync()
 
 module.exports = Blog
