@@ -19,12 +19,12 @@ blogsRouter.get('/:id', blogFinder, async (req, res) => {
   }
 })
 
-blogsRouter.post('/', async (req, res) => {
+blogsRouter.post('/', async (req, res , next) => {
   try {
     const blog = await Blog.create(req.body)
     res.json(blog)
   } catch(error) {
-    res.status(400).json({ error })
+    next(error)
   }
 })
 
@@ -39,11 +39,16 @@ blogsRouter.delete('/:id', blogFinder, async (req, res) => {
   res.sendStatus(204)
 })
 
-blogsRouter.put('/:id', blogFinder, async (req, res) => {
+blogsRouter.put('/:id', blogFinder, async (req, res, next) => {
   if (req.blog) {
-    req.blog.likes = req.body.likes
-    await req.blog.save()
-    res.json({ likes: req.blog.likes })
+    try {
+      req.blog.likes = req.body.likes
+      await req.blog.save()
+      res.json({ likes: req.blog.likes })
+    } catch(error) {
+      error.message = 'likes must be a number value'
+      next(error)
+    }    
   } else {
     res.sendStatus(404)
   }

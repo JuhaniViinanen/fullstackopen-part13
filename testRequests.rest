@@ -15,15 +15,15 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3001/api/blogs/11 HTTP/1.1
+DELETE http://localhost:3001/api/blogs/16 HTTP/1.1
 
 ###
-PUT http://localhost:3001/api/blogs/12 HTTP/1.1
+PUT http://localhost:3001/api/blogs/1 HTTP/1.1
 Content-Type: application/json
 
 {
     "author": "Test Author",
     "url": "this is not a valid URL",
     "title": "Test Title",
-    "likes": 12
+    "likes": 0
 }
