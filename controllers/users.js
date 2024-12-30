@@ -9,7 +9,7 @@ router.get('/', async (_req, res) => {
   res.json(blogs)
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   try {
     const { name, username, password } = req.body
     const saltRounds = 13
@@ -17,11 +17,11 @@ router.post('/', async (req, res) => {
     const user = await User.create({ name, username, passwordHash })
     res.status(201).json(user)
   } catch(error) {
-    res.status(400).json({ error })
+    next(error)
   }
 })
 
-router.put('/:username', async (req, res) => {
+router.put('/:username', async (req, res, next) => {
   try {
     const username = req.params.username
     const newUsername = req.body.username
@@ -35,7 +35,7 @@ router.put('/:username', async (req, res) => {
     await user.save()
     res.json({ username: newUsername })
   } catch(error) {
-    res.status(400).json({ error })
+    next(error)
   }
 })
 

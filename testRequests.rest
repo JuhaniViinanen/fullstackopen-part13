@@ -34,14 +34,14 @@ Content-Type: application/json
 
 {
     "name": "Patrick",
-    "username": "Burgers",
+    "username": "patrick.stevart@google.com",
     "password": "wordpass"
 }
 
 ###
-PUT http://localhost:3001/api/users/Burgers HTTP/1.1
+PUT http://localhost:3001/api/users/patty@google.com HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "Patty"
+    "username": "patrick"
 }
