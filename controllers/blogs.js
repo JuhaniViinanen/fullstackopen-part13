@@ -1,17 +1,17 @@
-const blogsRouter = require('express').Router()
-const Blog = require('../models/blog')
+const router = require('express').Router()
+const { Blog } = require('../models')
 
 const blogFinder = async (req, _res, next) => {
   req.blog = await Blog.findByPk(req.params.id)
   next()
 }
 
-blogsRouter.get('/', async (_req, res) => {
+router.get('/', async (_req, res) => {
   const blogs = await Blog.findAll()
   res.json(blogs)
 })
 
-blogsRouter.get('/:id', blogFinder, async (req, res) => {
+router.get('/:id', blogFinder, async (req, res) => {
   if (req.blog) {
     res.json(req.blog)
   } else {
@@ -19,7 +19,7 @@ blogsRouter.get('/:id', blogFinder, async (req, res) => {
   }
 })
 
-blogsRouter.post('/', async (req, res , next) => {
+router.post('/', async (req, res , next) => {
   try {
     const blog = await Blog.create(req.body)
     res.json(blog)
@@ -28,7 +28,7 @@ blogsRouter.post('/', async (req, res , next) => {
   }
 })
 
-blogsRouter.delete('/:id', blogFinder, async (req, res) => {
+router.delete('/:id', blogFinder, async (req, res) => {
   if (req.blog) {
     try {
       await req.blog.destroy()
@@ -39,8 +39,11 @@ blogsRouter.delete('/:id', blogFinder, async (req, res) => {
   res.sendStatus(204)
 })
 
-blogsRouter.put('/:id', blogFinder, async (req, res, next) => {
+router.put('/:id', blogFinder, async (req, res, next) => {
   if (req.blog) {
+    if (!req.body.likes) {
+      return res.status(400).json({ error: 'likes must be a number value' })
+    }
     try {
       req.blog.likes = req.body.likes
       await req.blog.save()
@@ -54,4 +57,4 @@ blogsRouter.put('/:id', blogFinder, async (req, res, next) => {
   }
 })
 
-module.exports = blogsRouter
+module.exports = router
