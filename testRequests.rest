@@ -6,16 +6,17 @@ GET http://localhost:3001/api/blogs/1 HTTP/1.1
 ###
 POST http://localhost:3001/api/blogs HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhdHJpY2suc3RldmFydEBnb29nbGUuY29tIiwiaWQiOjEsImlhdCI6MTczNjA5NjkxN30.HkpfeE5ZG_Kw0nBaVyadluyOrwS7KTj3099rdNI6LG0
 
 {
-    "author": "Test Author",
-    "url": "this is not a valid URL",
-    "title": "Test Title",
+    "author": "Test Auth",
+    "url": "url here",
+    "title": "Test Title number 2",
     "likes": 0
 }
 
 ###
-DELETE http://localhost:3001/api/blogs/18 HTTP/1.1
+DELETE http://localhost:3001/api/blogs/2 HTTP/1.1
 
 ###
 PUT http://localhost:3001/api/blogs/1 HTTP/1.1
@@ -44,4 +45,13 @@ Content-Type: application/json
 
 {
     "username": "patrick"
+}
+
+###
+POST http://localhost:3001/api/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "patrick.stevart@google.com",
+    "password": "wordpass"
 }

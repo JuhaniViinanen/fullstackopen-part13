@@ -1,5 +1,7 @@
 const router = require('express').Router()
-const { Blog } = require('../models')
+const { Blog, User } = require('../models')
+
+const { tokenExtractor } = require('../utils/middleware')
 
 const blogFinder = async (req, _res, next) => {
   req.blog = await Blog.findByPk(req.params.id)
@@ -19,9 +21,10 @@ router.get('/:id', blogFinder, async (req, res) => {
   }
 })
 
-router.post('/', async (req, res , next) => {
+router.post('/', tokenExtractor, async (req, res , next) => {
   try {
-    const blog = await Blog.create(req.body)
+    const user = await User.findByPk(req.decodedToken.id)
+    const blog = await Blog.create({...req.body, userId: user.id})
     res.json(blog)
   } catch(error) {
     next(error)
