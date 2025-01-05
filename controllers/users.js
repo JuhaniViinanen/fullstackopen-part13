@@ -8,7 +8,10 @@ router.get('/', async (_req, res) => {
       exclude: ['id', 'passwordHash']
     },
     include: {
-      model: Blog
+      model: Blog,
+      attributes: {
+        exclude: ['userId']
+      }
     }
   })
   res.json(blogs)
