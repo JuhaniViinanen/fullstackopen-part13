@@ -1,4 +1,4 @@
-GET http://localhost:3001/api/blogs?search=auth HTTP/1.1
+GET http://localhost:3001/api/blogs HTTP/1.1
 
 ###
 GET http://localhost:3001/api/blogs/1 HTTP/1.1
@@ -20,11 +20,11 @@ DELETE http://localhost:3001/api/blogs/5 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNwb25nZS5ib2JAZ29vZ2xlLmNvbSIsImlkIjoyLCJpYXQiOjE3MzYwOTg3ODJ9.qDxWUX-eG2tTDoC2RN942e6deJT493QmY4MLk1HLGNg
 
 ###
-PUT http://localhost:3001/api/blogs/1 HTTP/1.1
+PUT http://localhost:3001/api/blogs/4 HTTP/1.1
 Content-Type: application/json
 
 {
-    "likes": "asd"
+    "likes": 5
 }
 
 ###
