@@ -22,13 +22,15 @@ const up = async ({ context: queryInterface }) => {
       type: DataTypes.INTEGER,
       default: 0
     },
-    createdAt: {
+    created_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      isDate: true
     },
-    updatedAt: {
+    updated_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      isDate: true
     }
   })
   await queryInterface.createTable('users', {
@@ -47,17 +49,19 @@ const up = async ({ context: queryInterface }) => {
       unique: true,
       validate: { isEmail: true }
     },
-    passwordHash: {
+    password_hash: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    createdAt: {
+    created_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      isDate: true
     },
-    updatedAt: {
+    updated_at: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      isDate: true
     }
   })
   await queryInterface.addColumn('blogs', 'user_id', {
