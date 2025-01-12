@@ -10,6 +10,8 @@ const errorHandler = (error, _req, res, next) => {
     return res.status(400).json({ errors: error.errors.map(e => e.message) })
   } else if (error.name === "SequelizeDatabaseError") {
     return res.status(400).json({ error: error.message })
+  } else if (error.name === "SequelizeForeignKeyConstraintError") {
+    return res.status(400).json({ error: error.message })
   }
 
   next(error)
