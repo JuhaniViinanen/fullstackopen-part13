@@ -6,12 +6,14 @@ const unknownEndpoint = (_req, res) => {
 }
 
 const errorHandler = (error, _req, res, next) => {
-  if (error.name === "SequelizeValidationError") {
+  if (error.name === 'SequelizeValidationError') {
     return res.status(400).json({ errors: error.errors.map(e => e.message) })
-  } else if (error.name === "SequelizeDatabaseError") {
+  } else if (error.name === 'SequelizeDatabaseError') {
     return res.status(400).json({ error: error.message })
-  } else if (error.name === "SequelizeForeignKeyConstraintError") {
+  } else if (error.name === 'SequelizeForeignKeyConstraintError') {
     return res.status(400).json({ error: error.message })
+  } else if (error.name === 'SequelizeUniqueConstraintError') {
+    return res.status(400).json({ error: error.errors.map(e => e.message )})
   }
 
   next(error)

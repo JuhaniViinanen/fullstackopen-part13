@@ -22,6 +22,13 @@ const up = async ({ context: queryInterface }) => {
       defaultValue: false
     }
   })
+  
+  // A unique constraint on (userId, blogId)
+  // i.e a user may not add the same blog twice
+  await queryInterface.addConstraint('reading_lists', {
+    type: 'UNIQUE',
+    fields: ['user_id','blog_id']
+  })
 }
 
 const down = async ({ context: queryInterface }) => {
