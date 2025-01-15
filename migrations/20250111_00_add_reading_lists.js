@@ -19,6 +19,7 @@ const up = async ({ context: queryInterface }) => {
     },
     read: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
       defaultValue: false
     }
   })

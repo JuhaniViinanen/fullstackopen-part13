@@ -32,7 +32,7 @@ Content-Type: application/json
 GET http://localhost:3001/api/users HTTP/1.1
 
 ###
-GET http://localhost:3001/api/users/3 HTTP/1.1
+GET http://localhost:3001/api/users/1 HTTP/1.1
 
 ###
 POST http://localhost:3001/api/users HTTP/1.1
@@ -74,4 +74,13 @@ Content-Type: application/json
 {
     "blogId": 3,
     "userId": 3
+}
+
+###
+PUT http://localhost:3001/api/readinglists/1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFub255bW91c0Bnb29nbGUuY29tIiwiaWQiOjMsImlhdCI6MTczNjk0OTY0N30.nUO4SJl-6bBDJfmCyao4PgspUnPqjLwr2tWenOHmxlI
+Content-Type: application/json
+
+{
+    "read": false
 }
