@@ -39,9 +39,9 @@ POST http://localhost:3001/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Spongebob",
-    "username": "sponge.bob@google.com",
-    "password": "passpass"
+    "name": "Anon",
+    "username": "anonymous@google.com",
+    "password": "password"
 }
 
 ###
@@ -57,8 +57,8 @@ POST http://localhost:3001/api/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "spongebob@google.com",
-    "password": "passpass"
+    "username": "anonymous@google.com",
+    "password": "password"
 }
 
 ###
@@ -73,5 +73,5 @@ Content-Type: application/json
 
 {
     "blogId": 2,
-    "userId": 1
+    "userId": 3
 }
