@@ -18,6 +18,18 @@ router.get('/', async (_req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
+
+  let where = {}
+  const { read } = req.query
+  if (read) {
+    if (!['true', 'false'].includes(read)) {
+      return res.status(400).json({ error: `query parameter read invalid value: ${read}` })
+    }
+    where = {
+      read: 'true' === read
+    }
+  }
+  
   const user = await User.findByPk(req.params.id, {
     attributes: {
       exclude: ['id', 'passwordHash']
@@ -33,7 +45,10 @@ router.get('/:id', async (req, res) => {
         attributes: {
           exclude: ['userId', 'createdAt', 'updatedAt']
         },
-        through: { attributes: ['id', 'read'] }
+        through: {
+          attributes: ['id', 'read'],
+          where
+        }
       }
     ]
   })
