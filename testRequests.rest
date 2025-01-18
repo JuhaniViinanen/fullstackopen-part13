@@ -62,6 +62,10 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3001/api/logout HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFub255bW91c0Bnb29nbGUuY29tIiwiaWQiOjMsInNlc3Npb25JZCI6IjI3YTVhYzE0LTMyNDctNDMxOC1hZTUwLWM5MTAyYjg3YWMwOSIsImlhdCI6MTczNzIyNDcwNn0.MrFMMSX77LRpE2mHHso1Zk4Ql90QPC1B_gKj0G7Y1OA
+
+###
 GET http://localhost:3001/api/authors HTTP/1.1
 
 ###

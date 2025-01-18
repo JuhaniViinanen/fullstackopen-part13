@@ -19,6 +19,7 @@ activeSession.init({
   sequelize,
   underscored: true,
   modelName: 'activeSession',
+  timestamps: false,
 })
 
 module.exports = activeSession
