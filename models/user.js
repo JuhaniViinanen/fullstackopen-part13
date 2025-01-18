@@ -7,26 +7,31 @@ User.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
   },
   name: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: false,
   },
   username: {
     type: DataTypes.TEXT,
     allowNull: false,
     unique: true,
-    validate: { isEmail: true }
+    validate: { isEmail: true },
   },
   passwordHash: {
     type: DataTypes.TEXT,
-    allowNull: false
+    allowNull: false,
+  },
+  disabled: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
   },
 }, {
   sequelize,
   underscored: true,
-  modelName: 'user'
+  modelName: 'user',
 })
 
 module.exports = User
