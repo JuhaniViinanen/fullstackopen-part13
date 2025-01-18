@@ -1,6 +1,10 @@
 const Blog = require('./blog')
 const User = require('./user')
 const readingList = require('./readingList')
+const activeSession = require('./activeSession')
+
+User.hasOne(activeSession)
+activeSession.belongsTo(User)
 
 User.hasMany(Blog)
 Blog.belongsTo(User)
